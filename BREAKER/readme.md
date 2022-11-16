@@ -12,5 +12,5 @@ These scripts have a few options that allow the user to specify memory threshold
 The Rscript also returns a Data Frame which contains the current/total and task/total memory usage ratios for monitoring purposes.
 
 ## Installation
-No installation is required.
+No installation is required. <br>
 Only clone this repository and source/call the scripts within you own scripts.
