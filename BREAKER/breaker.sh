@@ -20,7 +20,7 @@ do
         fi
   index=index+1;
 done;
-if [ -z "${mem_tot_lim}" ]; then mem_tot_lim=10000000; fi;
+if [ -z "${mem_tot_lim}" ]; then mem_tot_lim=9000; fi;
 mem_tot_lim=`echo "scale=4; $mem_tot_lim" | bc`
 mem_tot_lim_nodot=`echo $mem_tot_lim | sed 's/\.//g'`
 mem=`free`; tot=`echo $mem | awk '{print $8}'`;
