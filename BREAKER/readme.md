@@ -20,8 +20,7 @@ Only clone this repository and source/call the scripts within you own scripts.
 Arguments for both scripts are : <br>
 #### --mem_tot_lim : current/total memory threshold (0,1)
 #### --mem_task_lim : task/total memory threshold (0,1)
-<br>
-The Rscript also has : <br>
-#### --save_dat : should you save the current workspace before killing the task?
+#### --save_dat : should you save the current workspace before killing the task (Rscript only)
+
 <br>
 See 'breaker_test.R' for an example of the Rscript usage.
