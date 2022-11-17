@@ -21,10 +21,11 @@ do
         fi
   index=index+1;
 done;
-if [ -z "${mem_tot_lim}" ]; then mem_tot_lim=10000000; fi;
-if [ -z "${mem_task_lim}" ]; then mem_task_lim=10000000; fi;
+if [ -z "${mem_tot_lim}" ]; then mem_tot_lim=-1; fi;
+if [ -z "${mem_task_lim}" ]; then mem_task_lim=-1; fi;
 mem_tot_lim=`echo "scale=4; $mem_tot_lim" | bc`
 mem_tot_lim_nodot=`echo $mem_tot_lim | sed 's/\.//g'`
+if [ "$mem_tot_lim_nodot" -gt 9999 ]; then echo "mem_check : mem_tot_lim is greater or equal to 1. Stopping program..."; exit 1; fi;
 mem=`free`; tot=`echo $mem | awk '{print $8}'`;
 used=`echo $mem | awk '{print $9}'`;
 mem_tot_used=`echo "scale=4; $used / $tot" | bc`
@@ -41,6 +42,7 @@ if [ "$mem_tot_used_nodot" -gt "$mem_tot_lim_nodot" ]; then echo "Total memory u
 avail=`echo $mem | awk '{print $13}'`;
 mem_task_lim=`echo "scale=4; $mem_task_lim" | bc`
 mem_task_lim_nodot=`echo $mem_task_lim | sed 's/\.//g'`
+if [ "$mem_task_lim_nodot" -gt 9999 ]; then echo "mem_check : mem_task_lim is greater or equal to 1. Stopping program..."; exit 1; fi;
 mem_task=`pmap $$ | tail -n1 | awk '{print $2}'`
 if [ `echo $mem_task | grep 'K'` ]
 then

@@ -6,9 +6,9 @@ mem_check <- function(mem_tot_lim=NULL, mem_task_lim=NULL, save_dat=FALSE){
   #' @param save_dat (bool) Should you save the current workspace in case of memory overload  (default FALSE)
   #' @return Dataframe containing current/total and task/total ratios
   if(is.null(mem_tot_lim) && is.null(mem_task_lim)){stop("Error in mem_check() : no memory threshold specified.")}
-  if(!is.null(mem_tot_lim) & is.null(mem_task_lim)){case<-1; pct_tot<-round(mem_tot_lim*100,2)}
-  if(is.null(mem_tot_lim) & !is.null(mem_task_lim)){case<-2; pct_task<-round(mem_task_lim*100,2)} 
-  if(!is.null(mem_tot_lim) & !is.null(mem_task_lim)){case<-3; pct_tot<-round(mem_tot_lim*100,2); pct_task<-round(mem_task_lim*100,2)}
+  if(!is.null(mem_tot_lim) & is.null(mem_task_lim)){case<-1; pct_tot<-round(mem_tot_lim*100,2); if((mem_tot_lim<0) | (mem_tot_lim>1)){stop("mem_check() : mem_tot_lim argument is not between (0,1)")}}
+  if(is.null(mem_tot_lim) & !is.null(mem_task_lim)){case<-2; pct_task<-round(mem_task_lim*100,2); if((mem_task_lim<0) | (mem_task_lim>1)){stop("mem_check() : mem_task_lim argument is not between (0,1)")}} 
+  if(!is.null(mem_tot_lim) & !is.null(mem_task_lim)){case<-3; pct_tot<-round(mem_tot_lim*100,2); pct_task<-round(mem_task_lim*100,2); if((mem_tot_lim<0) | (mem_tot_lim>1)){stop("mem_check() : mem_tot_lim argument is not between (0,1)")}; if((mem_task_lim<0) | (mem_task_lim>1)){stop("mem_check() : mem_task_lim argument is not between (0,1)")}}
   mem.test <- as.data.frame(system2("free", " --mega", stdout = TRUE))
   col=strsplit(mem.test[1,], " +")[[1]]
   mem <- list(total=as.numeric(strsplit(mem.test[2,], " +")[[1]][which(col=='total')]),

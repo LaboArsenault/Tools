@@ -18,8 +18,8 @@ Only clone this repository and source/call the scripts within you own scripts.
 
 ## Usage
 Arguments for both scripts are : <br>
-#### --mem_tot_lim : current/total memory threshold (0,1)
-#### --mem_task_lim : task/total memory threshold (0,1)
+#### --mem_tot_lim : current/total memory threshold [0,1[
+#### --mem_task_lim : task/total memory threshold [0,1[
 #### --save_dat : should you save the current workspace before killing the task (Rscript only)
 
 <br>
