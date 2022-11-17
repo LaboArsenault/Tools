@@ -1,7 +1,7 @@
 #!/bin/bash
 declare -A arguments=(); declare -A variables=(); declare -i index=1;
-variables["--mem_tot"]="mem_tot_lim";
-variables["--mem_task"]="mem_task_lim";
+variables["--mem_tot_lim"]="mem_tot_lim";
+variables["--mem_task_lim"]="mem_task_lim";
 for i in "$@"
 do
         arguments[$index]=$i;
