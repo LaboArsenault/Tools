@@ -2,7 +2,7 @@
 
 ## Author
 Created by Jerome Bourgault (jerome.bourgault@criucpq.ulaval.ca) <br>
-Current version : v1.0 <br>
+Current version : v1.1 <br>
 Date : 11/16/2022
 
 ## Description

@@ -71,4 +71,4 @@ fi;
 if [ "$mem_task_used_nodot" -gt "$mem_task_lim_nodot" ]; then echo "Total memory usage too high :"; echo "        --Task/Available : $(echo $mem_task_used | awk '{printf "%4.3f\n",$1*100}')% > $(echo $mem_task_lim | awk '{printf "%4.3f\n",$1*100}')%"; echo "Stopping program..."; kill -9 $$; exit 1; fi;
 mem_avail_tot=`echo "scale=4; $avail / $tot" | bc`
 mem_avail_tot=`echo $mem_avail_tot | sed 's/\.//g'`
-if [ "$mem_avail_tot" -gt 9500 ]; then echo "Total memory usage too high :"; echo "        --Available/Total : $mem_tot_used % > 95%"; echo "Stopping program..."; kill -9 $PPID; exit 1; fi;
+if [ "$mem_avail_tot" -lt 500 ]; then echo "Total memory usage too high :"; echo "        --Available/Total : $mem_tot_used % > 95%"; echo "Stopping program..."; kill -9 $PPID; exit 1; fi;
